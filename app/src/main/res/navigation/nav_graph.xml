@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="droid.maxaria.maxander.primenumbers.presentation.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcomeFragment_to_chooseLevelFragment"
+            app:destination="@id/chooseLevelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseLevelFragment"
+        android:name="droid.maxaria.maxander.primenumbers.presentation.ChooseLevelFragment"
+        android:label="fragment_choose_level"
+        tools:layout="@layout/fragment_choose_level" >
+        <action
+            android:id="@+id/action_chooseLevelFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="droid.maxaria.maxander.primenumbers.presentation.gamefragment.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment_to_gameFinishedFragment"
+            app:destination="@id/gameFinishedFragment"
+            app:popUpTo="@id/gameFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="level"
+            app:argType="droid.maxaria.maxander.primenumbers.domain.entity.Level" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFinishedFragment"
+        android:name="droid.maxaria.maxander.primenumbers.presentation.GameFinishedFragment"
+        android:label="fragment_game_finished"
+        tools:layout="@layout/fragment_game_finished" >
+        <action
+            android:id="@+id/action_gameFinishedFragment_to_chooseLevelFragment"
+            app:destination="@id/chooseLevelFragment" />
+        <argument
+            android:name="gameResult"
+            app:argType="droid.maxaria.maxander.primenumbers.domain.entity.GameResult" />
+    </fragment>
+</navigation>
